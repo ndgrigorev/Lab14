@@ -7,9 +7,9 @@ using System.Security.Cryptography;
 
 namespace Lab14
 {
-    internal class Program
+    public class Program
     {
-        static Animals RandomAnimal()
+        public static Animals RandomAnimal()
         {
             Random rnd = new Random();
             int x = rnd.Next(0, 4);
@@ -39,7 +39,7 @@ namespace Lab14
             }
         }
 
-        static List<Mammals> AllMammalsLINQ(Queue<Dictionary<int, Animals>> house)
+        public static List<Mammals> AllMammalsLINQ(Queue<Dictionary<int, Animals>> house)
         {
             List<Mammals> animals = new List<Mammals>();
             var result = from item in house
@@ -50,7 +50,7 @@ namespace Lab14
             return animals;
         }
 
-        static List<Mammals> AllMammalsMethod(Queue<Dictionary<int, Animals>> house)
+        public static List<Mammals> AllMammalsMethod(Queue<Dictionary<int, Animals>> house)
         {
             List<Mammals> animals = new List<Mammals>();
             var result = house.SelectMany(x=>x).Where(x => x.Value is Mammals).Select(x=>x);
@@ -58,14 +58,14 @@ namespace Lab14
             return animals;
         }
 
-        static int MaxAgeLINQ(Queue<Dictionary<int, Animals>> house)
+        public static int MaxAgeLINQ(Queue<Dictionary<int, Animals>> house)
         {
             List<Mammals> animals = new List<Mammals>();
             var result = (from item in house from item2 in item select item2.Value.Age).Max();
             return result;
         }
 
-        static int MaxAgeMethod(Queue<Dictionary<int, Animals>> house)
+        public static int MaxAgeMethod(Queue<Dictionary<int, Animals>> house)
         {
             List<Mammals> animals = new List<Mammals>();
             var result = house.SelectMany(item => item.Values)
@@ -74,7 +74,7 @@ namespace Lab14
             return result;
         }
 
-        static List<Cats> OrderByLINQ(Queue<Dictionary<int, Animals>> house)
+        public static List<Cats> OrderByLINQ(Queue<Dictionary<int, Animals>> house)
         {
             List<Cats> animals = new List<Cats>();
             var result = from item in house
@@ -86,7 +86,7 @@ namespace Lab14
             return animals;
         }
 
-        static List<Cats> OrderByMethod(Queue<Dictionary<int, Animals>> house)
+        public static List<Cats> OrderByMethod(Queue<Dictionary<int, Animals>> house)
         {
             List<Cats> animals = new List<Cats>();
             var result = house.SelectMany(item => item.Values)
@@ -97,7 +97,7 @@ namespace Lab14
             return animals;
         }
 
-        static List<int> LetFishLINQ(Queue<Dictionary<int, Animals>> house)
+        public static List<int> LetFishLINQ(Queue<Dictionary<int, Animals>> house)
         {
             List<int> index = new List<int>();
             var result = from item in house
@@ -109,7 +109,7 @@ namespace Lab14
             return index;
         }
 
-        static List<int> LetFishMethod(Queue<Dictionary<int, Animals>> house)
+        public static List<int> LetFishMethod(Queue<Dictionary<int, Animals>> house)
         {
             List<int> index = new List<int>();
             var result = house.SelectMany(item => item.Values)
@@ -119,7 +119,7 @@ namespace Lab14
             return index;
         }
 
-        static IEnumerable<IGrouping<string,Animals>> GroupByLINQ(Queue<Dictionary<int, Animals>> house)
+        public static IEnumerable<IGrouping<string,Animals>> GroupByLINQ(Queue<Dictionary<int, Animals>> house)
         {
             List<IGrouping<string, Animals>> groups = new List<IGrouping<string, Animals>>();
             var result = from item in house
@@ -129,7 +129,7 @@ namespace Lab14
             return result;
         }
 
-        static IEnumerable<IGrouping<string, Animals>> GroupByMethod(Queue<Dictionary<int, Animals>> house)
+        public static IEnumerable<IGrouping<string, Animals>> GroupByMethod(Queue<Dictionary<int, Animals>> house)
         {
             List<IGrouping<string, Animals>> groups = new List<IGrouping<string, Animals>>();
             var result = house.SelectMany(item => item.Values)
@@ -139,7 +139,7 @@ namespace Lab14
             return result;
         }
 
-        static Dictionary<int, Animals> CreateCollection(Dictionary<int, Animals> dictionary)
+        public static Dictionary<int, Animals> CreateCollection(Dictionary<int, Animals> dictionary)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -149,7 +149,7 @@ namespace Lab14
             return dictionary;
         }
 
-        static MyCollection<Animals> CreatingCollection()
+        public static MyCollection<Animals> CreatingCollection()
         {
             int size = 6;
             Random rnd = new Random();
@@ -160,7 +160,7 @@ namespace Lab14
             }
             return table;
         }
-        static List<MyCollection<Animals>> CreatingListCollections(List<MyCollection<Animals>> list)
+        public static List<MyCollection<Animals>> CreatingListCollections(List<MyCollection<Animals>> list)
         {
             for (int i = 0; i < 3; i++)
             {
@@ -169,7 +169,7 @@ namespace Lab14
             return list;
         }
 
-        static List<Mammals> AllMammalsLINQMyCollection(List<MyCollection<Animals>> tables)
+        public static List<Mammals> AllMammalsLINQMyCollection(List<MyCollection<Animals>> tables)
         {
             List<Mammals> animals = new List<Mammals>();
             var result = from item in tables
@@ -179,7 +179,7 @@ namespace Lab14
             foreach (var item in result) animals.Add((Mammals)item);
             return animals;
         }
-        static List<Mammals> AllMammalsMethodMyCollection(List<MyCollection<Animals>> tables)
+        public static List<Mammals> AllMammalsMethodMyCollection(List<MyCollection<Animals>> tables)
         {
             List<Mammals> animals = new List<Mammals>();
             var result = tables.SelectMany(x => x).Where(x => x is Mammals).Select(x => x);
@@ -187,14 +187,14 @@ namespace Lab14
             return animals;
         }
 
-        static int MaxAgeLINQMyCollection(List<MyCollection<Animals>> tables)
+        public static int MaxAgeLINQMyCollection(List<MyCollection<Animals>> tables)
         {
             List<Mammals> animals = new List<Mammals>();
             var result = (from item in tables from item2 in item select item2.Age).Max();
             return result;
         }
 
-        static int MaxAgeMethodMyCollection(List<MyCollection<Animals>> tables)
+        public static int MaxAgeMethodMyCollection(List<MyCollection<Animals>> tables)
         {
             List<Mammals> animals = new List<Mammals>();
             var result = tables.SelectMany(item => item)
@@ -203,7 +203,7 @@ namespace Lab14
             return result;
         }
 
-        static IEnumerable<IGrouping<string, Animals>> GroupByLINQMyCollection(List<MyCollection<Animals>> tables)
+        public static IEnumerable<IGrouping<string, Animals>> GroupByLINQMyCollection(List<MyCollection<Animals>> tables)
         {
             List<IGrouping<string, Animals>> groups = new List<IGrouping<string, Animals>>();
             var result = from item in tables
@@ -213,7 +213,7 @@ namespace Lab14
             return result;
         }
 
-        static IEnumerable<IGrouping<string, Animals>> GroupByMethodMyCollection(List<MyCollection<Animals>> tables)
+        public static IEnumerable<IGrouping<string, Animals>> GroupByMethodMyCollection(List<MyCollection<Animals>> tables)
         {
             List<IGrouping<string, Animals>> groups = new List<IGrouping<string, Animals>>();
             var result = tables.SelectMany(item => item)
@@ -222,13 +222,13 @@ namespace Lab14
             foreach (var item in result) groups.Add(item);
             return result;
         }
-        static int CountLINQMyCollection(List<MyCollection<Animals>> tables)
+        public static int CountLINQMyCollection(List<MyCollection<Animals>> tables)
         {
             List<Mammals> animals = new List<Mammals>();
             var result = (from item in tables from item2 in item select item2).Count();
             return result;
         }
-        static int CountMethodMyCollection(List<MyCollection<Animals>> tables)
+        public static int CountMethodMyCollection(List<MyCollection<Animals>> tables)
         {
             List<Mammals> animals = new List<Mammals>();
             var result = tables.SelectMany(item => item)
@@ -236,107 +236,22 @@ namespace Lab14
                 .Count();
             return result;
         }
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            //// часть 1
-            //Dictionary <int, Animals> flat1 = new Dictionary <int, Animals> ();
-            //flat1 = CreateCollection(flat1);
-            //Dictionary<int, Animals> flat2 = new Dictionary<int, Animals>();
-            //flat2 = CreateCollection(flat2);
-            //Dictionary<int, Animals> flat3 = new Dictionary<int, Animals>();
-            //flat3 = CreateCollection(flat3);
+            // часть 1
+            Dictionary<int, Animals> flat1 = new Dictionary<int, Animals>();
+            flat1 = CreateCollection(flat1);
+            Dictionary<int, Animals> flat2 = new Dictionary<int, Animals>();
+            flat2 = CreateCollection(flat2);
+            Dictionary<int, Animals> flat3 = new Dictionary<int, Animals>();
+            flat3 = CreateCollection(flat3);
 
-            //Queue<Dictionary<int, Animals>> house = new Queue<Dictionary<int, Animals>>();
-            //house.Enqueue(flat1);
-            //house.Enqueue(flat2);
-            //house.Enqueue(flat3);
+            Queue<Dictionary<int, Animals>> house = new Queue<Dictionary<int, Animals>>();
+            house.Enqueue(flat1);
+            house.Enqueue(flat2);
+            house.Enqueue(flat3);
 
-            //var result = from item in house
-            //             from item2 in item
-            //             select item2;
-            //foreach (var item in result)
-            //{
-            //    Console.WriteLine(item);
-            //}
-            //Console.WriteLine();
-            //Console.WriteLine();
-
-            ////запросы Where
-            //List<Mammals> animals = new List<Mammals> ();
-            //animals = AllMammalsLINQ(house);
-            //Console.WriteLine("Все млекопитающие (LINQ):");
-            //foreach (Mammals animal in animals) Console.WriteLine(animal);
-            //Console.WriteLine();
-            //animals = AllMammalsMethod(house);
-            //Console.WriteLine("Все млекопитающие (Метод расширения):");
-            //foreach (Mammals animal in animals) Console.WriteLine(animal);
-
-            ////запросы Max
-            //Console.WriteLine();
-            //int result1;
-            //result1 = MaxAgeLINQ(house);
-            //Console.WriteLine($"Максимальный возраст (LINQ): {result1}");
-            //result1 = MaxAgeMethod(house);
-            //Console.WriteLine($"Максимальный возраст (Метод расширения): {result1}");
-
-            ////запросы orderby
-            //Console.WriteLine();
-            //List<Cats> animals2 = new List<Cats>();
-            //animals2 = OrderByLINQ(house);
-            //Console.WriteLine("Кошки в порядке возрастания длины хвоста (LINQ):");
-            //foreach (Cats animal in animals2) Console.WriteLine(animal);
-            //Console.WriteLine();
-            //animals2 = OrderByMethod(house);
-            //Console.WriteLine("Кошки в порядке возрастания длины хвоста (Метод расширения):");
-            //foreach (Cats animal in animals2) Console.WriteLine(animal);
-
-            ////запросы let
-            //Console.WriteLine();
-            //List<int> index = new List<int>();
-            //index = LetFishLINQ(house);
-            //Console.WriteLine("Индексы рыб = кол-во плавников * возраст (LINQ): ");
-            //foreach(int i in index) Console.WriteLine(i);
-            //Console.WriteLine();
-            //index = LetFishMethod(house);
-            //Console.WriteLine("Индексы рыб = кол-во плавников * возраст (Метод расширения): ");
-            //foreach (int i in index) Console.WriteLine(i);
-
-            ////запросы groupby
-            //Console.WriteLine();
-            //Console.WriteLine("Группировка по именам (LINQ):");
-            //IEnumerable<IGrouping<string, Animals>> result2 = GroupByLINQ(house);
-            //foreach(IGrouping<string, Animals> gr in result2)
-            //{
-            //    Console.WriteLine();
-            //    Console.WriteLine(gr.Key, gr);
-            //    int i = 0;
-            //    foreach (var item in gr)
-            //    {
-            //        Console.WriteLine(item);
-            //        i++;
-            //    }
-            //    Console.WriteLine($"Всего в группе {i} элементов");
-            //}
-            //Console.WriteLine();
-            //Console.WriteLine("Группировка по именам (Метод расширения):");
-            //IEnumerable<IGrouping<string, Animals>> result3 = GroupByMethod(house);
-            //foreach (IGrouping<string, Animals> gr in result3)
-            //{
-            //    Console.WriteLine();
-            //    Console.WriteLine(gr.Key, gr);
-            //    int i = 0;
-            //    foreach (var item in gr)
-            //    {
-            //        Console.WriteLine(item);
-            //        i++;
-            //    }
-            //    Console.WriteLine($"Всего в группе {i} элементов");
-            //}
-
-            //часть 2
-            List <MyCollection<Animals>> tables = new List <MyCollection<Animals>>();
-            tables = CreatingListCollections(tables);
-            var result = from item in tables
+            var result = from item in house
                          from item2 in item
                          select item2;
             foreach (var item in result)
@@ -346,15 +261,100 @@ namespace Lab14
             Console.WriteLine();
             Console.WriteLine();
 
-            //запросы where
+            //запросы Where
             List<Mammals> animals = new List<Mammals>();
-            animals = AllMammalsLINQMyCollection(tables);
+            animals = AllMammalsLINQ(house);
             Console.WriteLine("Все млекопитающие (LINQ):");
             foreach (Mammals animal in animals) Console.WriteLine(animal);
             Console.WriteLine();
-            animals = AllMammalsMethodMyCollection(tables);
+            animals = AllMammalsMethod(house);
             Console.WriteLine("Все млекопитающие (Метод расширения):");
             foreach (Mammals animal in animals) Console.WriteLine(animal);
+
+            //запросы Max
+            Console.WriteLine();
+            int result1;
+            result1 = MaxAgeLINQ(house);
+            Console.WriteLine($"Максимальный возраст (LINQ): {result1}");
+            result1 = MaxAgeMethod(house);
+            Console.WriteLine($"Максимальный возраст (Метод расширения): {result1}");
+
+            //запросы orderby
+            Console.WriteLine();
+            List<Cats> animals2 = new List<Cats>();
+            animals2 = OrderByLINQ(house);
+            Console.WriteLine("Кошки в порядке возрастания длины хвоста (LINQ):");
+            foreach (Cats animal in animals2) Console.WriteLine(animal);
+            Console.WriteLine();
+            animals2 = OrderByMethod(house);
+            Console.WriteLine("Кошки в порядке возрастания длины хвоста (Метод расширения):");
+            foreach (Cats animal in animals2) Console.WriteLine(animal);
+
+            //запросы let
+            Console.WriteLine();
+            List<int> index = new List<int>();
+            index = LetFishLINQ(house);
+            Console.WriteLine("Индексы рыб = кол-во плавников * возраст (LINQ): ");
+            foreach (int i in index) Console.WriteLine(i);
+            Console.WriteLine();
+            index = LetFishMethod(house);
+            Console.WriteLine("Индексы рыб = кол-во плавников * возраст (Метод расширения): ");
+            foreach (int i in index) Console.WriteLine(i);
+
+            //запросы groupby
+            Console.WriteLine();
+            Console.WriteLine("Группировка по именам (LINQ):");
+            IEnumerable<IGrouping<string, Animals>> result2 = GroupByLINQ(house);
+            foreach (IGrouping<string, Animals> gr in result2)
+            {
+                Console.WriteLine();
+                Console.WriteLine(gr.Key, gr);
+                int i = 0;
+                foreach (var item in gr)
+                {
+                    Console.WriteLine(item);
+                    i++;
+                }
+                Console.WriteLine($"Всего в группе {i} элементов");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Группировка по именам (Метод расширения):");
+            IEnumerable<IGrouping<string, Animals>> result3 = GroupByMethod(house);
+            foreach (IGrouping<string, Animals> gr in result3)
+            {
+                Console.WriteLine();
+                Console.WriteLine(gr.Key, gr);
+                int i = 0;
+                foreach (var item in gr)
+                {
+                    Console.WriteLine(item);
+                    i++;
+                }
+                Console.WriteLine($"Всего в группе {i} элементов");
+            }
+
+            //часть 2
+            List <MyCollection<Animals>> tables = new List <MyCollection<Animals>>();
+            tables = CreatingListCollections(tables);
+            var result4 = from item in tables
+                         from item2 in item
+                         select item2;
+            foreach (var item in result4)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+
+            //запросы where
+            List<Mammals> animals3 = new List<Mammals>();
+            animals3 = AllMammalsLINQMyCollection(tables);
+            Console.WriteLine("Все млекопитающие (LINQ):");
+            foreach (Mammals animal in animals3) Console.WriteLine(animal);
+            Console.WriteLine();
+            animals3 = AllMammalsMethodMyCollection(tables);
+            Console.WriteLine("Все млекопитающие (Метод расширения):");
+            foreach (Mammals animal in animals3) Console.WriteLine(animal);
 
             //запросы Count
             Console.WriteLine();
@@ -375,11 +375,11 @@ namespace Lab14
             //запросы GroupBy
             Console.WriteLine();
             Console.WriteLine("Группировка по именам (LINQ):");
-            IEnumerable<IGrouping<string, Animals>> result2 = GroupByLINQMyCollection(tables);
-            foreach (IGrouping<string, Animals> gr in result2)
+            IEnumerable<IGrouping<string, Animals>> result5 = GroupByLINQMyCollection(tables);
+            foreach (IGrouping<string, Animals> gr in result5)
             {
                 Console.WriteLine();
-                Console.WriteLine(gr.Key, gr);
+                Console.WriteLine(gr.Key);
                 int i = 0;
                 foreach (var item in gr)
                 {
@@ -390,11 +390,11 @@ namespace Lab14
             }
             Console.WriteLine();
             Console.WriteLine("Группировка по именам (Метод расширения):");
-            IEnumerable<IGrouping<string, Animals>> result3 = GroupByMethodMyCollection(tables);
-            foreach (IGrouping<string, Animals> gr in result3)
+            result5 = GroupByMethodMyCollection(tables);
+            foreach (IGrouping<string, Animals> gr in result5)
             {
                 Console.WriteLine();
-                Console.WriteLine(gr.Key, gr);
+                Console.WriteLine(gr.Key);
                 int i = 0;
                 foreach (var item in gr)
                 {
